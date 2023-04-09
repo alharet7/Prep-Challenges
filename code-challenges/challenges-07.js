@@ -99,15 +99,15 @@ const obj = {
 //  2- If one of the names is null don`t add it to the full name
 
 const cvFormatter = (arr) => {
-    let filteredCvs = cvs.filter(cv => cv.yearsOfExperience > 1)
-                     .map(cv => {
-                         let fullName = cv.firstName;
-                         if (cv.lastName) fullName += ` ${cv.lastName}`;
-                         return {
-                             fullName: fullName,
-                             tech: cv.tech
-                         };
-                     });
+    // let filteredCvs = cvs.filter(cv => cv.yearsOfExperience > 1)
+    //                  .map(cv => {
+    //                      let fullName = cv.firstName;
+    //                      if (cv.lastName) fullName += ` ${cv.lastName}`;
+    //                      return {
+    //                          fullName: fullName,
+    //                          tech: cv.tech
+    //                      };
+    //                  });
 };
 // -------------------------------------------------------------------------------------------------------
 
