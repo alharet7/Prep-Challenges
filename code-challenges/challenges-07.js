@@ -32,7 +32,7 @@ const obj = {
     hobby: 'Gaming and coding'
   };
   
-  console.log(objLat(obj));
+  
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -99,16 +99,25 @@ const obj = {
 //  2- If one of the names is null don`t add it to the full name
 
 const cvFormatter = (arr) => {
-    let filteredCvs = cvs.filter(cv => cv.yearsOfExperience > 1)
-                     .map(cv => {
-                         let fullName = cv.firstName;
-                         if (cv.lastName) fullName += ` ${cv.lastName}`;
-                         return {
-                             fullName: fullName,
-                             tech: cv.tech
-                         };
-                     });
+   let upDatedcvs =[];
+   for(let i=0; i<arr.length;i++){
+    if (arr[i].yearsOfExperience <= 1){
+        continue;}
+        if (arr[i].firstName&&arr[i].lastName){
+         upDatedcvs.push({fullName:`${arr[i].firstName} ${arr[i].lastName}`,tech:`${arr[i].tech}`});
+        }
+        else if(arr[i].firstName== null){
+            upDatedcvs.push({fullName: `${arr[i].lastName}`,tech: `${arr[i].tech}`})
+        }
+        else if (arr[i].lastName == null){
+            upDatedcvs.push({fullName:`${arr[i].firstName}`,tech: `${arr[i].tech}`});
+        }
+   }
+   
+   return upDatedcvs;
 };
+
+
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
