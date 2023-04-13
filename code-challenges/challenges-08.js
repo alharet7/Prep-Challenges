@@ -36,11 +36,12 @@ const customerAndAge = (obj) => {
 
   return customerStrings;
 };
+
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
 // Challenge 02
-// optional:
+// Required:
 //
 // Write a function that takes recipe info object and returns an array of recipe info as strings
 // as in the example
@@ -52,37 +53,29 @@ const customerAndAge = (obj) => {
 //   cookTime: "twoHours",
 //   price: "25$",
 // };
-
+//
 // Output:
 // ["name: pizza", "ingredients: bread,tomato,chicken,mayo", "cookTime: twoHours", "price: 25$"]
-
+//
 // Note:
 // You can solve this challenge by using Object.entries
 
 const getEntries = (obj) => {
-  const recipeArray = [];
+  const recipeInfoArray = [];
 
-  const ingredientsString = recipeInfo.ingredients.join(",");
-  Object.entries(recipeInfo).forEach(([key, value]) => {
+
+  const ingredientsString = obj.ingredients.join(",");
+  for (const [key, value] of Object.entries(obj)) {
     if (key === "ingredients") {
-      recipeArray.push(`ingredients: ${ingredientsString}`);
+
+      recipeInfoArray.push(`ingredients: ${ingredientsString}`);
     } else {
-      recipeArray.push(`${key}: ${value}`);
+      recipeInfoArray.push(`${key}: ${value}`);
     }
-  });
+  }
 
-  return recipeArray;
-}; 
-// const recipeInfo = {
-//   name: "pizza",
-//   ingredients: ["bread", "tomato", "chicken", "mayo"],
-//   cookTime: "twoHours",
-//   price: "25$",
-// };
-
-// const recipeInfoStrings = getEntries(recipeInfo);
-// console.log(recipeInfoStrings); // ["name: pizza", "ingredients: bread,tomato,chicken,mayo", "cookTime: twoHours", "price: 25$"]
-
+  return recipeInfoArray;
+};
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
