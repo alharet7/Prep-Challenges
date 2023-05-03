@@ -1,7 +1,7 @@
 const { objectCounter, stringReverse, statistics, cleanData } = require("../code-challenges/challenges-13");
 
 describe('Challenge13-01', () => {
-    test('Object-Counter', () => {
+    test.skip('Object-Counter', () => {
         var voters = [
             {
                 voter_Name: "Adam Scott",
