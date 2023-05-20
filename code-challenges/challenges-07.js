@@ -22,17 +22,17 @@
 
 const objLat = (obj) => {
     const { firstName, lastName, age, hobby } = obj;
-  const formattedName = `${firstName.charAt(0).toUpperCase()}${firstName.slice(1)} ${lastName.charAt(0).toUpperCase()}${lastName.slice(1)}`;
-  return `my name is ${formattedName} I am ${age} YO, and I love ${hobby}.`;
+    const formattedName = `${firstName.charAt(0).toUpperCase()}${firstName.slice(1)} ${lastName.charAt(0).toUpperCase()}${lastName.slice(1)}`;
+    return `my name is ${formattedName} I am ${age} YO, and I love ${hobby}.`;
 };
 const obj = {
     firstName: 'Hareth',
     lastName: 'Hyari',
     age: 28,
     hobby: 'Gaming and coding'
-  };
-  
-  
+};
+
+
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -99,22 +99,23 @@ const obj = {
 //  2- If one of the names is null don`t add it to the full name
 
 const cvFormatter = (arr) => {
-   let upDatedcvs =[];
-   for(let i=0; i<arr.length;i++){
-    if (arr[i].yearsOfExperience <= 1){
-        continue;}
-        if (arr[i].firstName&&arr[i].lastName){
-         upDatedcvs.push({fullName:`${arr[i].firstName} ${arr[i].lastName}`,tech:`${arr[i].tech}`});
+    let upDatedcvs = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].yearsOfExperience <= 1) {
+            continue;
         }
-        else if(arr[i].firstName== null){
-            upDatedcvs.push({fullName: `${arr[i].lastName}`,tech: `${arr[i].tech}`})
+        if (arr[i].firstName && arr[i].lastName) {
+            upDatedcvs.push({ fullName: `${arr[i].firstName} ${arr[i].lastName}`, tech: `${arr[i].tech}` });
         }
-        else if (arr[i].lastName == null){
-            upDatedcvs.push({fullName:`${arr[i].firstName}`,tech: `${arr[i].tech}`});
+        else if (arr[i].firstName == null) {
+            upDatedcvs.push({ fullName: `${arr[i].lastName}`, tech: `${arr[i].tech}` })
         }
-   }
-   
-   return upDatedcvs;
+        else if (arr[i].lastName == null) {
+            upDatedcvs.push({ fullName: `${arr[i].firstName}`, tech: `${arr[i].tech}` });
+        }
+    }
+
+    return upDatedcvs;
 };
 
 
@@ -142,7 +143,43 @@ const cvFormatter = (arr) => {
 //  1- rejectedApplicants are applications that has both the names empty or null and whoever have one year or less of Experience
 
 const applicationsStatics = (arr) => {
-    // write your code here
+
+    let result = {
+        python_devs: 0,
+        javaScript_devs: 0,
+        dotNet_devs: 0,
+        java_devs: 0,
+        totalApplicants: 0,
+        rejectedApplicants: 0,
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        result.totalApplicants++;
+        if (arr[i]['yearsOfExperience'] > 1) {
+            if ((arr[i]['firstName'] != null || arr[i]['firstName'] != "" ||
+                arr[i]['lastName'] != null || arr[i]['lastName'] != "")) {
+
+                if (arr[i]['tech'] == "Python") { result.python_devs++; }
+                if (arr[i]['tech'] == "JS") { result.javaScript_devs++; }
+                if (arr[i]['tech'] == ".Net") { result.dotNet_devs++; }
+                if (arr[i]['tech'] == "Java") { result.java_devs++; }
+            }
+
+            else {
+                result.rejectedApplicants++;
+
+            }
+
+        }
+
+        else {
+            result.rejectedApplicants++;
+        }
+
+    }
+
+    return result;
+
 };
 // -------------------------------------------------------------------------------------------------------
 
@@ -269,7 +306,26 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    // write your code here
+    
+    let sum = 0;
+    let avg = 0.0;
+    let counter = 0;
+    for (let i = 0; i < data.grades.length; i++) {
+        for (let j = 0; j < data.grades[i].classes.length; j++) {
+            for (let m = 0; m < data.grades[i].classes[j].classScores.length; m++) {
+
+                sum += data.grades[i].classes[j].classScores[m];
+                counter++;
+            }
+            avg = sum / counter;
+
+            data.grades[i].classes[j]['avg'] = Math.floor(avg);
+            sum = 0;
+            counter = 0;
+        }
+
+    }
+    return data;
 };
 // -------------------------------------------------------------------------------------------------------
 
