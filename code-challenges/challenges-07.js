@@ -305,28 +305,28 @@ let data = {
 //  1- This is not the exact data you will be getting every time and the solution should be dynamic
 //  2- You need to round the average to the nearest lower number 
 
-const classesAvg = (data) => {
+// const classesAvg = (data) => {
     
-    let sum = 0;
-    let avg = 0.0;
-    let counter = 0;
-    for (let i = 0; i < data.grades.length; i++) {
-        for (let j = 0; j < data.grades[i].classes.length; j++) {
-            for (let m = 0; m < data.grades[i].classes[j].classScores.length; m++) {
+//     let sum = 0;
+//     let avg = 0.0;
+//     let counter = 0;
+//     for (let i = 0; i < data.grades.length; i++) {
+//         for (let j = 0; j < data.grades[i].classes.length; j++) {
+//             for (let m = 0; m < data.grades[i].classes[j].classScores.length; m++) {
 
-                sum += data.grades[i].classes[j].classScores[m];
-                counter++;
-            }
-            avg = sum / counter;
+//                 sum += data.grades[i].classes[j].classScores[m];
+//                 counter++;
+//             }
+//             avg = sum / counter;
 
-            data.grades[i].classes[j]['avg'] = Math.floor(avg);
-            sum = 0;
-            counter = 0;
-        }
+//             data.grades[i].classes[j]['avg'] = Math.floor(avg);
+//             sum = 0;
+//             counter = 0;
+//         }
 
-    }
-    return data;
-};
+//     }
+//     return data;
+// };
 // -------------------------------------------------------------------------------------------------------
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
